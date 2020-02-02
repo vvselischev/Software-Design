@@ -1,4 +1,4 @@
-from bash.controller import Cli
+from bash.controller.cli import Cli
 from bash.interpreter.interpreter import Interpreter
 
 
