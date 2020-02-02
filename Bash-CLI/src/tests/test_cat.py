@@ -5,7 +5,7 @@ from bash.interpreter.channels.io_channel import IOChannel
 def test_cat_from_argument():
     command = Cat()
     output = IOChannel()
-    command.set_args(["cat", "tests/data/example.txt"])
+    command.set_args(["cat", "Bash-CLI/src/tests/data/example.txt"])
     command.set_output_channel(output)
     command.execute()
 
@@ -15,7 +15,7 @@ def test_cat_from_argument():
 
 def test_cat_to_stdout(capsys):
     command = Cat()
-    command.set_args(["cat", "tests/data/example.txt"])
+    command.set_args(["cat", "Bash-CLI/src/tests/data/example.txt"])
     command.execute()
 
     expected = "first line\nsecond\n123"

@@ -40,7 +40,7 @@ def test_echo_pass_arguments():
 def test_echo_not_read_arguments():
     pipe = Pipe()
     first_command = Cat()
-    first_command.set_args(["cat", "tests/data/numbers.txt"])
+    first_command.set_args(["cat", "Bash-CLI/src/tests/data/numbers.txt"])
     pipe.append(first_command)
 
     second_command = Echo()
@@ -56,7 +56,7 @@ def test_echo_not_read_arguments():
 def test_cat_pass_to_pipe():
     pipe = Pipe()
     first_command = Cat()
-    first_command.set_args(["cat", "tests/data/numbers.txt"])
+    first_command.set_args(["cat", "Bash-CLI/src/tests/data/numbers.txt"])
     pipe.append(first_command)
 
     second_command = Cat()
@@ -120,7 +120,7 @@ def test_wc_from_pipe():
 def test_wc_to_pipe():
     pipe = Pipe()
     first_command = Wc()
-    first_command.set_args(["wc", "tests/data/numbers.txt"])
+    first_command.set_args(["wc", "Bash-CLI/src/tests/data/numbers.txt"])
     pipe.append(first_command)
 
     second_command = Cat()
@@ -136,7 +136,7 @@ def test_wc_to_pipe():
 def test_external_from_pipe():
     pipe = Pipe()
     first_command = Cat()
-    first_command.set_args(["cat", "tests/data/numbers.txt"])
+    first_command.set_args(["cat", "Bash-CLI/src/tests/data/numbers.txt"])
     pipe.append(first_command)
 
     second_command = CallExternal()
@@ -152,7 +152,7 @@ def test_external_from_pipe():
 def test_external_to_pipe():
     pipe = Pipe()
     first_command = CallExternal()
-    first_command.set_args(["sort", "tests/data/numbers.txt"])
+    first_command.set_args(["sort", "Bash-CLI/src/tests/data/numbers.txt"])
     pipe.append(first_command)
 
     second_command = Cat()

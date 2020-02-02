@@ -5,7 +5,7 @@ from bash.interpreter.channels.io_channel import IOChannel
 def test_wc_from_argument():
     command = Wc()
     output = IOChannel()
-    command.set_args(["wc", "tests/data/example.txt"])
+    command.set_args(["wc", "Bash-CLI/src/tests/data/example.txt"])
     command.set_output_channel(output)
     command.execute()
 
@@ -15,7 +15,7 @@ def test_wc_from_argument():
 
 def test_wc_to_stdout(capsys):
     command = Wc()
-    command.set_args(["wc", "tests/data/example.txt"])
+    command.set_args(["wc", "Bash-CLI/src/tests/data/example.txt"])
     command.execute()
 
     expected = "3 4 21\n"
