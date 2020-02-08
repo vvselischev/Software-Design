@@ -17,22 +17,22 @@ class CallExternal(Command):
         try:
             process = self.__prepare_process()
 
-            output_bytes = process.communicate()[0]
+            output_string = process.communicate()[0]
             process.stdin.close()
 
-            output_string = self.__convert_bytes_to_string(output_bytes)
             self._output_channel.write(output_string)
         except subprocess.CalledProcessError as error:
-            raise Exception(f'Failed to run external command. Command: '
-                            f'{self._args[0]}, '
-                            f'{self.__convert_bytes_to_string(error.stdout)}')
+            raise Exception(f"Failed to run external command. Command: "
+                            f"{self._args[0]}, "
+                            f"{error.stdout}")
 
     def __prepare_process(self):
         process = subprocess.Popen(
             self._args,
             stderr=subprocess.STDOUT,
             stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE
+            stdout=subprocess.PIPE,
+            universal_newlines=True
         )
 
         if self.environment:
@@ -40,12 +40,6 @@ class CallExternal(Command):
 
         if self._input_channel:
             input_data_string = self._input_channel.read()
-            input_data_bytes = self.__convert_string_to_bytes(input_data_string)
+            input_data_bytes = input_data_string
             process.stdin.write(input_data_bytes)
         return process
-
-    def __convert_bytes_to_string(self, bytes):
-        return str(bytes, "utf-8")
-
-    def __convert_string_to_bytes(self, string):
-        return string.encode('utf-8')
