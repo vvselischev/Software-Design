@@ -42,7 +42,12 @@ class Grep(Command):
             self._pattern = "\\b" + self._pattern + "\\b"
 
         output_lines = self.__find_lines(input_content, flag)
-        self._output_channel.write("\n".join(output_lines) + '\n')
+
+        output = ""
+        if output_lines:
+            output = '\n'.join(output_lines) + '\n'
+
+        self._output_channel.write(output)
 
     def __find_lines(self, input_content, flag):
         lines_to_show = 0
