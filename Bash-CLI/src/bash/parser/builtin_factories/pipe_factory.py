@@ -8,8 +8,8 @@ class PipeFactory(ExecutableFactory):
     Creates a pipe of commands by the tokenized string.
     Chooses a factory for each command by asking the given interpreter.
     """
-    def __init__(self, interpreter):
-        self.interpreter = interpreter
+    def __init__(self, factory_manager):
+        self._factory_manager = factory_manager
 
     def create_executable(self, tokenized):
         tokenized_commands = tokenized.split_by_type(TokenType.PIPE)
@@ -20,7 +20,7 @@ class PipeFactory(ExecutableFactory):
                     tokenized_command.contains_token(TokenType.PIPE):
                 raise Exception("Invalid command occurred in pipe.")
 
-            factory = self.interpreter.choose_factory(tokenized_command)
+            factory = self._factory_manager.choose_factory(tokenized_command)
             executable = factory.create_executable(tokenized_command)
             pipe.append(executable)
 
