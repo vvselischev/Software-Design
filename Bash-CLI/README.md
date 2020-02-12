@@ -13,7 +13,8 @@
 Поддерживаются одинарные и двойные кавычки. Подстановка переменных внутри одинарных кавычек не осуществляется.
 
 ### Архитектура ###
-https://drive.google.com/file/d/1AmD5MH9M5e6v_-6F458NlGLhoVjOhSZ-/view
+Общая схема: https://drive.google.com/file/d/1AmD5MH9M5e6v_-6F458NlGLhoVjOhSZ-/view
+Детальная схема: https://drive.google.com/open?id=1lr4leizWVzSJYd9WO_qUrMMDZwXwQ9jP
 
 Объект Cli считывает команды из стандартного ввода и передаёт их на исполнение объекту Interpreter.
 
