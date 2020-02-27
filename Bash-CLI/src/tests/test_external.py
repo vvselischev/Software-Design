@@ -59,12 +59,12 @@ def test_external_with_many_args():
 
 def test_external_with_no_args():
     command = CallExternal()
-    command.set_args(["echo"])
+    command.set_args(["sort"])
     output = IOChannel()
     command.set_output_channel(output)
     command.execute()
 
-    expected = "\n"
+    expected = ""
     assert output.read() == expected
 
 
@@ -77,9 +77,7 @@ def test_external_to_stdout(capsys):
     assert captured.out[:5] == "usage"
 
 
-def test_external_not_found():
+def test_not_found_external_not_fail():
     command = CallExternal()
-    command.set_args(["команда_не_найдена"])
-
-    with pytest.raises(Exception):
-        command.execute()
+    command.set_args(["strange_command"])
+    command.execute()

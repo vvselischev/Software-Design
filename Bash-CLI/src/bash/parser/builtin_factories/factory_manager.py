@@ -7,6 +7,11 @@ from .. import TokenType
 
 
 class FactoryManager:
+    """
+    Chooses an appropriate factory to create a command
+    by the given tokenized object.
+    """
+    
     __COMMAND_FACTORIES = {"cat": CatFactory(),
                            "echo": EchoFactory(),
                            "pwd": PwdFactory(),

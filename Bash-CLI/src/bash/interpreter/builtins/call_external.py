@@ -32,7 +32,8 @@ class CallExternal(Command):
             stderr=subprocess.STDOUT,
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
-            universal_newlines=True
+            universal_newlines=True,
+            shell=True
         )
 
         if self.environment:
