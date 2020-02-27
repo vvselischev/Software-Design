@@ -57,6 +57,6 @@ class Tokenized:
         for i, token in enumerate(self._tokens):
             if token.get_token_type() != token_type:
                 result[-1].add(token)
-            elif i != self.size() - 1:
+            else:
                 result.append(Tokenized())
         return result

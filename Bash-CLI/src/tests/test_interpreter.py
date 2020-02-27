@@ -1,3 +1,5 @@
+import pytest
+
 from bash.controller.cli import Cli
 from bash.interpreter.interpreter import Interpreter
 
@@ -40,3 +42,24 @@ def test_substitution_to_command(capsys):
 
     captured = capsys.readouterr()
     assert captured.out == "1\n"
+
+
+def test_bad_pipe_in_end():
+    cli = Cli()
+    interpreter = Interpreter(cli)
+    with pytest.raises(Exception):
+        interpreter.process("echo 123 | ")
+        
+ 
+def test_bad_pipe_in_beginning():
+    cli = Cli()
+    interpreter = Interpreter(cli)
+    with pytest.raises(Exception):
+        interpreter.process(" | echo 123")
+        
+        
+def test_bad_pipe_in_middle():
+    cli = Cli()
+    interpreter = Interpreter(cli)
+    with pytest.raises(Exception):
+        interpreter.process("echo 123 | | echo 123")
