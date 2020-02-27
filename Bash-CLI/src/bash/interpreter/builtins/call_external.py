@@ -1,3 +1,4 @@
+import os
 import subprocess
 
 from ..command import Command
@@ -27,13 +28,18 @@ class CallExternal(Command):
                             f"{error.stdout}")
 
     def __prepare_process(self):
+        if os.name == 'nt':
+            shell = True
+        else:
+            shell = False
+        
         process = subprocess.Popen(
             self._args,
             stderr=subprocess.STDOUT,
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             universal_newlines=True,
-            shell=True
+            shell=shell
         )
 
         if self.environment:
