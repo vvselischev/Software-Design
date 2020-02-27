@@ -75,9 +75,3 @@ def test_external_to_stdout(capsys):
 
     captured = capsys.readouterr()
     assert captured.out[:5] == "usage"
-
-
-def test_not_found_external_not_fail():
-    command = CallExternal()
-    command.set_args(["strange_command"])
-    command.execute()
