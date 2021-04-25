@@ -1,6 +1,7 @@
 from . import PipeFactory, AssignFactory, ExitFactory, CallExternalFactory
 from .cat_factory import CatFactory
 from .echo_factory import EchoFactory
+from .grep_factory import GrepFactory
 from .pwd_factory import PwdFactory
 from .wc_factory import WcFactory
 from .. import TokenType
@@ -15,7 +16,8 @@ class FactoryManager:
     __COMMAND_FACTORIES = {"cat": CatFactory(),
                            "echo": EchoFactory(),
                            "pwd": PwdFactory(),
-                           "wc": WcFactory()
+                           "wc": WcFactory(),
+                           "grep": GrepFactory()
                            }
 
     def __init__(self, environment, controller):
